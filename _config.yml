@@ -1,0 +1,12 @@
+# Site settings
+title: JSer 
+email: 15701206504@163.com
+description: 'Record daily experience'
+baseurl: ""
+url: "http://yourdomain.com"
+#twitter_username: jekyllrb
+github_username: zfczoe 
+
+# Build settings
+markdown: kramdown
+permalink: pretty
