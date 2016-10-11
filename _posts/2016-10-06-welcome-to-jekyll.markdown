@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "实现webview登陆h5"
-date:   2016-10-06 14:21:52
-categories: jekyll update
+date:   2016-10-06 
+categories: js h5
 ---
 
 
