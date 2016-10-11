@@ -106,7 +106,7 @@ uploadHttpData: function( r, type ) {
     
 ```
 
-具体实现代码 https://github.com/zfczoe/uploadFile 
+具体实现代码 [https://github.com/zfczoe/uploadFile ]
 
 
 
