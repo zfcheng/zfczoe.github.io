@@ -5,7 +5,7 @@
 
 #####公司项目pc
 
-* [航天科工](https://htkg.uats.cc/)
+* [航天科工](https://htkg.uats.cc/){:target="_blank"}
 * [人民信金融](http://zxhd.uats.cc/)
 * [东方新华](http://www.818wealth.com/)
 * [新毅金融](http://www.718bank.com/)
