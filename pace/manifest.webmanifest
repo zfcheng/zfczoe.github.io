@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "节律 PACE · 心肺体能训练",
+  "short_name": "节律 PACE",
+  "description": "4周训练计划、记录与离线打卡。数据仅存本机。",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7f3",
+  "theme_color": "#102a32",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
