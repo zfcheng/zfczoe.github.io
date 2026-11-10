@@ -14,6 +14,7 @@ struct PACEHealthBridgeApp: App {
 final class BridgeController: ObservableObject {
     @Published var status = "佩戴 Apple Watch 训练后，点击「同步健康数据」"
     @Published var isSyncing = false
+    @Published var exportURL: URL?
 
     weak var webView: WKWebView?
     private let reader = HealthKitReader()
@@ -29,6 +30,9 @@ final class BridgeController: ObservableObject {
                 try await reader.requestAccess()
                 let snapshot = try await reader.readRecent(days: days)
                 let json = try JSONEncoder().encode(snapshot)
+                let file = FileManager.default.temporaryDirectory.appendingPathComponent("PACE-HealthKit-export.json")
+                try json.write(to: file, options: .atomic)
+                exportURL = file
                 pendingEncodedSnapshot = json.base64EncodedString()
                 status = "已读取 \(snapshot.workouts.count) 条训练、\(snapshot.heartRate.count) 条心率和 \(snapshot.steps.count) 天步数。"
                 sendToWebView()
@@ -113,6 +117,22 @@ struct MainScreen: View {
                 .padding(.horizontal, 15)
                 .padding(.bottom, 7)
                 .background(.regularMaterial)
+
+            if let url = bridge.exportURL {
+                HStack {
+                    ShareLink(item: url) {
+                        Label("导出到文件 / 分享给 PACE 网页版", systemImage: "square.and.arrow.up")
+                            .font(.caption.weight(.medium))
+                    }
+                    Spacer()
+                    Text("本地 JSON")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 15)
+                .padding(.vertical, 7)
+                .background(.regularMaterial)
+            }
 
             PACEWebView(bridge: bridge)
         }
