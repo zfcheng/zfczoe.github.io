@@ -1,0 +1,30 @@
+name: PACE HealthKit Bridge build check
+on:
+  push:
+    branches:
+      - pace-healthkit-bridge
+    paths:
+      - 'PACEHealthBridge/**'
+      - '.github/workflows/pace-healthbridge-build.yml'
+  workflow_dispatch:
+
+jobs:
+  ios-build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        run: |
+          cd PACEHealthBridge
+          xcodegen generate
+      - name: Compile for iOS Simulator (no signing or private data)
+        run: |
+          xcodebuild \
+            -project PACEHealthBridge/PACEHealthBridge.xcodeproj \
+            -scheme PACEHealthBridge \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build
