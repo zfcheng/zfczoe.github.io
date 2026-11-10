@@ -1,0 +1,11 @@
+# XcodeGen output and local user settings
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+.DS_Store
+build/
+DerivedData/
+*.ipa
+*.mobileprovision
+*.p12
+*.p8
+*.cer
